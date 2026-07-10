@@ -1,0 +1,26 @@
+# EDUSHELL FIX — Desktop Asli, Langsung Work!
+# Copy satu per SATU ke terminal
+
+# 1. Install xterm (biar ada X client fallback)
+sudo apt install -y xterm
+
+# 2. Build session binary
+cd ~/Documents/DS
+cargo build --release -p edushell-session
+
+# 3. Install binary
+sudo install -Dm755 target/release/edushell-session /usr/local/bin/
+
+# 4. Fix session file
+sudo mkdir -p /usr/local/share/xsessions
+sudo cp packaging/edushell-session.desktop /usr/local/share/xsessions/edushell.desktop
+sudo rm -f /usr/local/share/wayland-sessions/edushell.desktop
+
+# 5. Commit & push
+git add -A && git commit -m "Fix session: add xterm fallback, fix PATH"
+git push
+
+# 6. Cek dulu dari terminal (harusnya muncul tulisan + jalan)
+/usr/local/bin/edushell-session
+
+# Abis itu: Ctrl+C, logout, pilih EduShell dari login
