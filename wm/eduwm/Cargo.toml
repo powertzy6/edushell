@@ -1,0 +1,14 @@
+[package]
+name = "eduwm"
+version = "1.0.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+authors = ["EduShell Team"]
+description = "EduWM — Next-generation Wayland-native Window Manager for EduShell"
+
+[dependencies]
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }
+edushell-sdk = { path = "../../services/edushell-sdk", version = "1.0.0" }

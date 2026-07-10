@@ -1,0 +1,64 @@
+# EduShell Default Configuration
+# This file is installed to /etc/edushell/config.toml
+
+[general]
+# Language (leave empty for system locale)
+language = ""
+# Theme (light, dark, or auto)
+theme = "auto"
+# Enable animations
+animations = true
+# Reduce motion (overrides animations for accessibility)
+reduced_motion = false
+
+[panel]
+# Panel position: top, bottom, left, right
+position = "top"
+# Panel height/width in pixels (depending on position)
+size = 44
+# Auto-hide panel
+autohide = false
+# Enable panel transparency
+transparent = true
+
+[dock]
+# Enable dock
+enabled = true
+# Dock position: left, bottom, right
+position = "bottom"
+# Icon size in pixels
+icon_size = 48
+# Auto-hide dock
+autohide = true
+# Enable dock transparency
+transparent = true
+
+[workspaces]
+# Number of workspaces
+count = 4
+# Workspace mode: static, dynamic
+mode = "static"
+# Enable workspace overview on Super key
+overview_on_super = true
+
+[search]
+# Search provider priority (comma-separated)
+providers = "applications,settings,files,calculator,web"
+# Maximum search results
+max_results = 10
+# Enable fuzzy search
+fuzzy = true
+
+[accessibility]
+# Enable screen reader
+screen_reader = false
+# Enable high contrast
+high_contrast = false
+# Font scale factor
+font_scale = 1.0
+# Enable sticky keys
+sticky_keys = false
+# Enable slow keys
+slow_keys = false
+# Enable bounce keys
+bounce_keys = false

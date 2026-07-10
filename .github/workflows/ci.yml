@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop, v*]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Install system deps (GTK4 crates)
+        run: sudo apt-get update && sudo apt-get install -y libgtk-4-dev libadwaita-1-dev libpango1.0-dev libgdk-pixbuf2.0-dev || echo "GTK deps not available — skipping GTK crates"
+      - name: Check non-GTK crates
+        run: cargo check -p edushell-core2 -p edushell-sdk -p edushell-cli -p edushell-apps -p eduwm
+      - name: Check formatting
+        run: cargo fmt --all --check
+      - name: Clippy on non-GTK crates
+        run: cargo clippy -p edushell-core2 -p edushell-sdk -p edushell-cli -p edushell-apps -p eduwm -- -D warnings
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install system deps
+        run: sudo apt-get update && sudo apt-get install -y libgtk-4-dev libadwaita-1-dev || echo "GTK deps not available — skipping GTK crate tests"
+      - name: Run non-GTK tests
+        run: cargo test -p edushell-core2 -p edushell-sdk -p edushell-cli -p eduwm
+
+  security-audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install cargo-audit
+        run: cargo install cargo-audit
+      - name: Run audit
+        run: cargo audit
+
+  doc:
+    name: Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build docs
+        run: cargo doc --no-deps -p edushell-core2 -p edushell-sdk -p edushell-cli -p eduwm

@@ -1,0 +1,17 @@
+target/
+*.swp
+*.swo
+*~
+.DS_Store
+.vscode/
+.idea/
+*.iml
+.env
+.env.local
+*.bak
+*.orig
+*.log
+build/
+dist/
+*.deb
+*.rpm

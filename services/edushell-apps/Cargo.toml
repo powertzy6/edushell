@@ -1,0 +1,29 @@
+[package]
+name = "edushell-apps"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "EduShell Educational Applications — Welcome, Learning Hub, Edu Terminal, Project Hub, and more"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+chrono.workspace = true
+tracing.workspace = true
+tokio.workspace = true
+edushell-core = { path = "../../core/edushell-core" }
+uuid.workspace = true
+once_cell.workspace = true
+thiserror.workspace = true
+
+# Optional GTK frontend
+gtk4 = { workspace = true, optional = true }
+
+[features]
+default = []
+gtk = ["gtk4"]
+
+[lib]
+name = "edushell_apps"
+path = "src/lib.rs"

@@ -1,0 +1,13 @@
+[package]
+name = "edushell-cli"
+version = "1.0.0"
+edition = "2021"
+description = "EduShell developer CLI tool"
+license = "GPL-3.0-or-later"
+authors = ["EduShell Team <dev@edushell.id>"]
+
+[dependencies]
+clap = { workspace = true }
+edushell-sdk = { path = "../edushell-sdk" }
+serde_json = { workspace = true }
+thiserror = { workspace = true }

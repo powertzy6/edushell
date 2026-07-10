@@ -1,0 +1,34 @@
+[package]
+name = "edushell-core"
+version = "1.0.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "EduShell core library — error, logging, event, state, service, config, theme, resource, window, app-registry, search, session, settings"
+
+[features]
+default = ["gtk", "dbus"]
+gtk = ["dep:gtk4", "dep:glib"]
+dbus = ["dep:zbus"]
+
+[dependencies]
+serde = { workspace = true }
+toml = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+tokio = { workspace = true }
+zbus = { workspace = true, optional = true }
+glib = { workspace = true, optional = true }
+gtk4 = { workspace = true, optional = true }
+notify = { workspace = true, optional = true }
+chrono = { workspace = true }
+semver = { workspace = true }
+thiserror = { workspace = true }
+uuid = { workspace = true }
+dirs = { workspace = true }
+once_cell = { workspace = true }
+fnv = { workspace = true }
+async-trait = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"

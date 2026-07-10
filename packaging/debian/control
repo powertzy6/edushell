@@ -1,0 +1,7 @@
+Source: edushell
+Section: x11
+Priority: optional
+Maintainer: EduShell Team <dev@edushell.id>
+Build-Depends: debhelper-compat (= 13), cargo, rustc, libgtk-4-dev, libadwaita-1-dev, pkg-config, python3
+Standards-Version: 4.7.0
+Homepage: https://edushell.id

@@ -1,0 +1,18 @@
+[package]
+name = "edushell-daemon"
+version = "1.0.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "EduShell main daemon — initializes and manages all core services"
+
+[[bin]]
+name = "edushell-daemon"
+path = "src/main.rs"
+
+[dependencies]
+edushell-core = { path = "../../core/edushell-core", default-features = false }
+tokio = { workspace = true }
+tracing = { workspace = true }
+clap = { workspace = true }
+chrono = { workspace = true }
+async-trait = { workspace = true }

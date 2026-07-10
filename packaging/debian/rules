@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	cargo build --release
+
+override_dh_auto_test:
+	cargo test --release
+
+override_dh_auto_install:
+	mkdir -p $(DESTDIR)/usr/bin
+	cp target/release/edushell-daemon $(DESTDIR)/usr/bin/
+	cp target/release/edushell-cli $(DESTDIR)/usr/bin/
+	mkdir -p $(DESTDIR)/usr/share/applications
+	cp packaging/edushell.desktop $(DESTDIR)/usr/share/applications/
+	mkdir -p $(DESTDIR)/usr/share/xsessions
+	cp packaging/edushell-session.desktop $(DESTDIR)/usr/share/xsessions/
+	mkdir -p $(DESTDIR)/usr/share/edushell
+	cp -r assets/* $(DESTDIR)/usr/share/edushell/ 2>/dev/null || true

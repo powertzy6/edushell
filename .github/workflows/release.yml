@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    name: Build Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install system deps
+        run: sudo apt-get update && sudo apt-get install -y libgtk-4-dev libadwaita-1-dev || echo "GTK deps unavailable"
+      - name: Build release
+        run: cargo build --release -p edushell-core2 -p edushell-sdk -p edushell-cli -p edushell-apps -p eduwm
+      - name: Run tests
+        run: cargo test --release -p edushell-core2 -p edushell-sdk -p edushell-cli -p eduwm
+      - name: Package
+        run: |
+          mkdir -p dist/usr/bin dist/usr/share
+          cp target/release/edushell-cli dist/usr/bin/
+          cp -r packaging/debian dist/
+          cp packaging/edushell.desktop dist/usr/share/
+          cp packaging/edushell-session.desktop dist/usr/share/
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: edushell-release
+          path: dist/
+
+  publish:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            dist/**

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=EduShell
+Comment=Educational Desktop Shell
+Exec=edushell-session
+Icon=edushell
+Categories=Education;Utility;Desktop;GTK;
+Terminal=false
+StartupNotify=true
+NoDisplay=false
