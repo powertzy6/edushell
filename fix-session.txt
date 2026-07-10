@@ -1,0 +1,5 @@
+# Update session script & login lagi — copy & paste
+
+sudo cp ~/Documents/DS/packaging/edushell-session.sh /usr/local/bin/edushell-session
+sudo chmod +x /usr/local/bin/edushell-session
+echo "Selesai! Sekarang logout dan pilih EduShell dari layar login."

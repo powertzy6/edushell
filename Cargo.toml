@@ -8,6 +8,7 @@ members = [
     "services/edushell-sdk",
     "services/edushell-cli",
     "services/edushell-core2",
+    "services/edushell-session",
     "wm/eduwm",
 ]
 

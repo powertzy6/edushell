@@ -1,0 +1,15 @@
+[package]
+name = "edushell-session"
+version = "1.0.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+authors = ["EduShell Team"]
+description = "EduShell Desktop Session — launches the full EduShell desktop environment"
+
+[[bin]]
+name = "edushell-session"
+path = "src/main.rs"
+
+[dependencies]
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }

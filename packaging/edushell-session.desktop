@@ -2,6 +2,7 @@
 Type=Application
 Name=EduShell
 Comment=Educational Desktop Shell
-Exec=edushell-session
+Exec=/usr/local/bin/edushell-session
 Icon=edushell
 Type=XSession
+DesktopNames=EduShell

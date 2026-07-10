@@ -1,0 +1,14 @@
+# EduShell Install — copy & paste satu per satu ke terminal (Ctrl+Alt+T)
+
+# 1. Install CLI
+sudo install -Dm755 ~/Documents/DS/target/release/edushell-cli /usr/local/bin/edushell
+
+# 2. Install desktop file
+sudo install -Dm644 ~/Documents/DS/packaging/edushell.desktop /usr/local/share/applications/edushell.desktop
+
+# 3. Install session file
+sudo mkdir -p /usr/local/share/wayland-sessions
+sudo cp ~/Documents/DS/packaging/edushell-session.desktop /usr/local/share/wayland-sessions/edushell.desktop
+
+# 4. Cek instalasi
+edushell version

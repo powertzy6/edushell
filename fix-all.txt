@@ -1,0 +1,15 @@
+# EduShell Desktop Fix — Copy & paste semua baris ini satu per satu!
+
+# STEP 1: Install paket desktop
+sudo apt update && sudo apt install -y tint2 picom feh network-manager-gnome
+
+# STEP 2: Jalanin script config
+bash ~/Documents/DS/fix-desktop.sh
+
+# STEP 3: Update session script
+sudo cp ~/Documents/DS/packaging/edushell-session.sh /usr/local/bin/edushell-session
+
+# STEP 4: Hapus session wayland yg ngaco
+sudo rm -f /usr/local/share/wayland-sessions/edushell.desktop
+
+echo "SELESAI! Logout, pilih EduShell dari layar login."

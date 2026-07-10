@@ -1,0 +1,24 @@
+# EDUSHELL FULL INSTALL — Fix Lengkap
+# Copy & paste SATU per SATU ke terminal
+
+# 1. Install library GTK4
+sudo apt update
+sudo apt install -y libgtk-4-dev libadwaita-1-dev libpango1.0-dev libgdk-pixbuf-2.0-dev libglib2.0-dev
+
+# 2. Build semua komponen
+cd ~/Documents/DS
+cargo build --release -p edushell-core -p edushell-daemon -p edushell-ui -p edushell-apps -p edushell-sdk -p edushell-cli -p edushell-core2 -p edushell-session
+
+# 3. Install binary
+sudo install -Dm755 target/release/edushell-daemon /usr/local/bin/
+sudo install -Dm755 target/release/edushell-cli /usr/local/bin/
+sudo install -Dm755 target/release/edushell-session /usr/local/bin/
+
+# 4. Install session
+sudo mkdir -p /usr/local/share/xsessions
+sudo cp ~/Documents/DS/packaging/edushell-session.desktop /usr/local/share/xsessions/edushell.desktop
+sudo rm -f /usr/local/share/wayland-sessions/edushell.desktop 2>/dev/null
+
+# 5. Cek
+/usr/local/bin/edushell-session --version
+echo "SELESAI! Sekarang logout dan pilih EduShell dari layar login."
