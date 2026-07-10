@@ -1,0 +1,13 @@
+# EDUSHELL FINAL FIX — PASTI WORK!
+# Copy & paste SEMUA BARIS SEKALIGUS ke terminal
+
+sudo apt install -y xterm
+cd ~/Documents/DS
+cargo build --release -p edushell-session
+sudo install -Dm755 target/release/edushell-session /usr/local/bin/
+sudo install -Dm755 target/release/edushell-session /usr/bin/edushell-session
+sudo mkdir -p /usr/share/xsessions
+sudo cp packaging/edushell-session.desktop /usr/share/xsessions/edushell.desktop
+sudo rm -f /usr/local/share/wayland-sessions/edushell.desktop
+sudo rm -f /usr/local/share/xsessions/edushell.desktop
+echo "SELESAI! Logout, pilih EduShell."

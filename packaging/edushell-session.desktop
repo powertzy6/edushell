@@ -1,8 +1,6 @@
 [Desktop Entry]
-Type=Application
+Version=1.0
 Name=EduShell
-Comment=Educational Desktop Shell
+Comment=EduShell Desktop Environment
 Exec=/usr/local/bin/edushell-session
-Icon=edushell
 Type=XSession
-DesktopNames=EduShell
